@@ -27,7 +27,12 @@
     padding: 6px 0;
   }
   .tabbar a[aria-current="page"] {
-    color: var(--acc);
+    color: var(--fg);
+    font-weight: 700;
+  }
+  .tabbar a[aria-current="page"] svg {
+    background: var(--acc);
+    outline: 3px solid var(--acc);
   }
   .tabbar svg {
     width: 20px;

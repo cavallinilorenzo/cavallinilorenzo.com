@@ -7,7 +7,6 @@
   background: var(--fg);
   color: var(--bg);
   padding: 9px 14px;
-  border-radius: 8px;
   font: 500 13px var(--body);
   transition:
     opacity 0.25s,

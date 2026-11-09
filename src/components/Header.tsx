@@ -2,33 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 import { COPY } from "@/content/copy";
 import { NAV, isCurrent } from "@/lib/nav";
 import { DownloadIcon, Monogram } from "./icons";
-import { ThemeButton } from "./ThemeButton";
 import styles from "./Header.module.css";
 
 export const CV_HREF = "/cv.pdf";
 
 export function Header() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 0);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   return (
-    <header
-      className={styles.header}
-      data-scrolled={scrolled}
-      data-testid="topbar"
-      data-chrome="top"
-    >
+    <header className={styles.header} data-testid="topbar" data-chrome="top">
       <div className={styles.inner}>
         <Link className={styles.brand} href="/">
           <Monogram size={28} />
@@ -47,7 +32,6 @@ export function Header() {
           ))}
         </nav>
         <div className={styles.tools}>
-          <ThemeButton />
           <a
             className={styles.cv}
             href={CV_HREF}

@@ -11,7 +11,7 @@ One of Lorenzo's own products shown on the portfolio (Overload, Oxide, Clicky.rs
 _Avoid_: Startup, app, product
 
 **Project card**:
-The tile that represents a Project in the portfolio's project grid.
+The block that represents a Project on Home and on the Projects page.
 _Avoid_: Tile, project preview
 
 **Project page**:

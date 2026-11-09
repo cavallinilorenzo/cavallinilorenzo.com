@@ -1,4 +1,4 @@
-import button from "@/components/CopyEmail.module.css";
+import button from "@/components/Button.module.css";
 import { CopyEmailButton } from "@/components/CopyEmailButton";
 import { CheckIcon, LockIcon, ServiceIcon } from "@/components/glyphs";
 import { PageIntro } from "@/components/PageIntro";

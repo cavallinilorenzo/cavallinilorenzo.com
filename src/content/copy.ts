@@ -48,21 +48,19 @@ export const COPY = {
     copyEmail: "Copy email",
     copied: "Email copied",
     copyFailed: "Copy failed, try again",
-    theme: "Switch theme",
   },
   footer: {
     left: "© 2026 Lorenzo Cavallini",
     right: "Mantova, Italy",
   },
   home: {
-    // The third part is shown in the accent colour.
-    h1: ["By day I study,", "by night I ", "build", "."] as const,
+    // Two clauses; the first and third parts get the highlighter.
+    h1: ["Study", " by day,", "build", " by night."] as const,
     avail: "Open to internships and freelance work",
     intro:
       "I'm Lorenzo, 21, in my last year of computer engineering. If I need a tool, I build it. Sometimes other people need it too.",
     ctaProjects: "See projects",
     selected: "What I've built",
-    all: "All projects",
   },
   projects: {
     title: "Projects",

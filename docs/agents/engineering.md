@@ -22,7 +22,7 @@ Read by `/verify`, `/judge`, `/build`, `/ship`, `/ui` and `/release`.
   - `pnpm e2e` (Playwright against the production build; run `pnpm build` first)
 - run: `pnpm dev`, available at `http://localhost:3000`. For the production build: `pnpm build && pnpm start --port 3100`, at `http://localhost:3100`
 - exercise: browser or curl against the production server, e.g. `curl -sI http://localhost:3100/cv.pdf` must answer `content-type: application/pdf`
-- screenshots: with the production server on :3100, `node scripts/screenshots.mjs <path> <outDir>` writes dark/light, desktop/390px PNGs (default dir `screenshots/`, gitignored)
+- screenshots: with the production server on :3100, `node scripts/screenshots.mjs <path> <outDir>` writes desktop/390px PNGs (default dir `screenshots/`, gitignored)
 - test data: none needed, the site has no user data
 
 ## Review

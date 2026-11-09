@@ -50,6 +50,14 @@ export function formatRange(e: TimelineEntry): RangeLabel {
   return { text: from === to ? from : `${from} — ${to}`, ongoing: false };
 }
 
+const MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" ");
+
+/** "2026-10" as "Oct 2026", "2024" unchanged. */
+export function formatMonth(date: string): string {
+  const [y, m] = date.split("-");
+  return m ? `${MONTHS[Number(m) - 1]} ${y}` : y;
+}
+
 const years = (n: number) => (n === 1 ? "1 yr" : `${n} yrs`);
 
 function span(e: TimelineEntry, today: string): string {

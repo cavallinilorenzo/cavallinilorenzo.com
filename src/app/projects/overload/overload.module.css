@@ -19,8 +19,8 @@
   flex: none;
 }
 .hero h1 {
-  font: 600 clamp(36px, 5vw, 56px) / 1 var(--display);
-  letter-spacing: -0.035em;
+  font: 900 clamp(54px, 9vw, 112px) / 0.95 var(--display);
+  letter-spacing: -0.05em;
 }
 .hero p {
   font-size: 18px;
@@ -40,11 +40,7 @@
   aspect-ratio: 9 / 19.5;
   border-radius: 26px;
   border: 1px solid var(--line);
-  background: linear-gradient(
-    160deg,
-    color-mix(in srgb, var(--acc) 22%, var(--card)),
-    var(--card) 70%
-  );
+  background: var(--pale);
   display: grid;
   place-items: center;
   color: var(--mut);
@@ -84,7 +80,6 @@
   top: 90px;
   align-self: start;
   border: 1px solid var(--line);
-  border-radius: 14px;
   padding: 6px 18px;
   background: var(--card);
 }
@@ -104,7 +99,9 @@
   color: var(--mut);
 }
 .facts dd {
+  min-width: 0;
   text-align: right;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 820px) {

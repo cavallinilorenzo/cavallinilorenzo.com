@@ -33,20 +33,20 @@ test.describe("Projects page", () => {
     await expect(page.locator("body")).not.toContainText("AlwaysClaudeCode");
   });
 
-  test("lays the cards out in two columns on desktop", async ({ page }) => {
+  test("stacks the projects as full-width bands", async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto("/projects");
+    await settled(page);
     const boxes = await page.getByTestId("project-card").evaluateAll((els) =>
       els.map((e) => {
         const r = e.getBoundingClientRect();
         return { x: Math.round(r.x), y: Math.round(r.y) };
       }),
     );
-    expect(boxes[0].y).toBe(boxes[1].y);
-    expect(boxes[2].y).toBe(boxes[3].y);
-    expect(boxes[2].y).toBeGreaterThan(boxes[0].y);
-    expect(boxes[1].x).toBeGreaterThan(boxes[0].x);
-    expect(boxes[2].x).toBe(boxes[0].x);
+    for (let i = 1; i < boxes.length; i++) {
+      expect(boxes[i].y).toBeGreaterThan(boxes[i - 1].y);
+      expect(boxes[i].x).toBe(boxes[0].x);
+    }
   });
 });
 
@@ -59,8 +59,8 @@ test.describe("Home", () => {
     const see = page.getByRole("link", { name: "See projects →" });
     const cv = page.getByRole("link", { name: "↓ Download CV" });
     const copy = page.getByRole("button", { name: "Copy email" });
-    await expect(h1).toHaveText(/By day I study,\s*by night I build\./);
-    await expect(h1.locator("span span span")).toHaveText("build");
+    await expect(h1).toHaveText(/Study by day,\s*build by night\./);
+    await expect(h1.locator("span:has(> svg)")).toHaveText(["Study", "build"]);
     await settled(page);
     const ys = await Promise.all(
       [avail, h1, intro, see].map(async (l) => (await l.boundingBox())!.y),
@@ -72,25 +72,9 @@ test.describe("Home", () => {
     expect([...xs].sort((a, b) => a - b)).toEqual(xs);
   });
 
-  test("shows the selected projects in a 2x2 grid", async ({ page }) => {
-    await page.setViewportSize({ width: 1280, height: 800 });
+  test("shows the four projects inside the log", async ({ page }) => {
     await page.goto("/");
-    await expect(
-      page.getByRole("heading", { name: "What I've built" }),
-    ).toBeVisible();
-    await expect(
-      page.getByRole("link", { name: "All projects →" }),
-    ).toHaveAttribute("href", "/projects");
     await expectCards(page);
-    await settled(page);
-    const ys = await page
-      .getByTestId("project-card")
-      .evaluateAll((els) =>
-        els.map((e) => Math.round(e.getBoundingClientRect().y)),
-      );
-    expect(ys[0]).toBe(ys[1]);
-    expect(ys[2]).toBe(ys[3]);
-    expect(ys[2]).toBeGreaterThan(ys[0]);
   });
 
   test("See projects opens the Projects page", async ({ page }) => {
