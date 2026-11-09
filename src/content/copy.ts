@@ -33,6 +33,13 @@ export const PAGES: Record<PageKey, { title: string; description: string }> = {
   },
 };
 
+/** Metadata of the Overload Project page (not one of the five pages). */
+export const OVERLOAD_PAGE = {
+  title: "Overload · Lorenzo Cavallini",
+  description:
+    "Overload is a free, minimal gym log for iOS: every set, your progression over time and Apple Health, without the clutter.",
+};
+
 export const EMAIL = "hello@cavallinilorenzo.com";
 
 export const COPY = {

@@ -1,3 +1,4 @@
+import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
 // Fully static site (ADR-0001): no server-side features may be added here.
@@ -19,4 +20,7 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// MDX is used for the Overload prose only.
+const withMDX = createMDX({});
+
+export default withMDX(nextConfig);
