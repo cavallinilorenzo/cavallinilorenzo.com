@@ -33,9 +33,6 @@ const OXIDE_START = "2026-10";
 // UNCONFIRMED: the Oxide repository URL is a guess; fix it when the repo is public.
 const OXIDE_REPO = "https://github.com/cavallinilorenzo/oxide";
 
-export const TIMELINE_INTRO =
-  "One timeline: university, freelance work, hackathons and the things I've shipped.";
-
 export const TIMELINE: readonly ExperienceEntry[] = [
   {
     id: "oxide",
