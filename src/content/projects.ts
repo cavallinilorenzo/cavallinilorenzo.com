@@ -4,8 +4,7 @@
 // invalid entry fails the build.
 import { parseRegistry } from "../lib/project";
 
-// PLACEHOLDER: Lorenzo supplies the optimised Overload screenshots; until then
-// these paths do not exist on disk.
+// The optimised Overload screenshots live at these paths in `public/`.
 const placeholderShot = (n: number) => ({
   src: `/projects/overload/screenshot-${n}.png`,
   frame: "iphone",
