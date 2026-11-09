@@ -1,0 +1,119 @@
+.hero {
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  padding: 96px 0 72px;
+}
+.avail {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font: 13px var(--mono);
+  color: var(--mut);
+  margin-bottom: 28px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--acc);
+  display: inline-block;
+  animation: pulse 2.2s infinite;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--acc) 60%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 7px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+.big {
+  font: 600 clamp(44px, 7.4vw, 88px) / 1 var(--display);
+  letter-spacing: -0.04em;
+  max-width: 13ch;
+}
+/* Each headline line sits in a mask (overflow hidden) and rises out of it.
+   The padding and negative margin leave room for descenders and the tight
+   letter-spacing without moving the layout. */
+.line {
+  display: block;
+  overflow: hidden;
+  padding: 0 0.05em 0.12em;
+  margin: 0 -0.05em -0.12em;
+}
+.lineIn {
+  display: block;
+}
+.accent {
+  color: var(--acc);
+}
+.sub {
+  font-size: 18px;
+  color: var(--mut);
+  max-width: 52ch;
+  margin: 24px 0 32px;
+}
+.cta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.sechead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid var(--line);
+  padding: 22px 0 18px;
+}
+.sechead h2 {
+  font: 500 12px var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mut);
+}
+.sechead a {
+  font-size: 14px;
+  color: var(--mut);
+}
+.sechead a:hover {
+  color: var(--fg);
+}
+
+@media (max-width: 820px) {
+  .hero {
+    padding: 56px 0 48px;
+  }
+}
+
+/* Hero entrance, ~1 s: availability line, then headline lines, then intro and
+   buttons. One easing, no springs. Only with motion allowed. */
+@media (prefers-reduced-motion: no-preference) {
+  .avail {
+    animation: fade-up 550ms var(--ease) backwards;
+  }
+  .lineIn {
+    animation: rise 750ms var(--ease) 100ms backwards;
+  }
+  .line:nth-child(2) .lineIn {
+    animation-delay: 210ms;
+  }
+  .sub {
+    animation: fade-up 600ms var(--ease) 380ms backwards;
+  }
+  .cta {
+    animation: fade-up 600ms var(--ease) 460ms backwards;
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+@keyframes rise {
+  from {
+    transform: translateY(105%);
+  }
+}

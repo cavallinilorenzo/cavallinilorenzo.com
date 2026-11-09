@@ -1,0 +1,13 @@
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 820px) {
+  .main {
+    padding: 0 18px;
+  }
+}
