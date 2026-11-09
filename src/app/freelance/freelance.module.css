@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border: 1px solid var(--line);
-  border-radius: 16px;
   background: var(--card);
   margin-bottom: 80px;
 }
@@ -15,7 +14,7 @@
 }
 .stats b {
   display: block;
-  font: 600 44px / 1 var(--display);
+  font: 800 56px / 1 var(--display);
   letter-spacing: -0.035em;
   margin-bottom: 8px;
 }
@@ -43,18 +42,16 @@
 }
 .services > div {
   border: 1px solid var(--line);
-  border-radius: 16px;
   padding: 24px;
   background: var(--card);
 }
 .si {
   width: 44px;
   height: 44px;
-  border-radius: 12px;
   display: grid;
   place-items: center;
-  color: var(--acc);
-  background: color-mix(in srgb, var(--acc) 12%, var(--card2));
+  color: var(--onacc);
+  background: var(--acc);
   margin-bottom: 20px;
 }
 .services h3 {
@@ -76,7 +73,6 @@
 .card {
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 18px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -87,16 +83,11 @@
   gap: 16px;
   align-items: center;
   border-bottom: 1px solid var(--line);
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--acc) 6%, var(--card)),
-    var(--card)
-  );
+  background: var(--pale);
 }
 .ci {
   width: 52px;
   height: 52px;
-  border-radius: 14px;
   display: grid;
   place-items: center;
   flex: none;
@@ -133,7 +124,7 @@
   border: 0;
 }
 .list li svg {
-  color: var(--acc);
+  color: var(--fg);
   margin-top: 3px;
 }
 .list b {
@@ -154,9 +145,8 @@
 }
 .stack li {
   font: 500 11.5px var(--mono);
-  color: var(--acc);
-  background: color-mix(in srgb, var(--acc) 12%, transparent);
-  border-radius: 999px;
+  color: var(--fg);
+  background: var(--pale);
   padding: 3px 10px;
 }
 .anon {
@@ -169,16 +159,13 @@
 }
 
 .band {
-  border-radius: 18px;
   padding: 44px;
   text-align: center;
   margin-bottom: 80px;
-  background: radial-gradient(
-    80% 140% at 50% 0%,
-    color-mix(in srgb, var(--acc) 18%, var(--card)),
-    var(--card) 70%
-  );
-  border: 1px solid var(--line);
+  background-color: var(--navy);
+  background-image: var(--paper-navy);
+  background-size: 20px 20px;
+  color: #fff;
 }
 .band h2 {
   font: 600 32px var(--display);
@@ -186,7 +173,7 @@
   margin-bottom: 8px;
 }
 .band p {
-  color: var(--mut);
+  color: rgb(255 255 255 / 0.78);
   margin-bottom: 22px;
   display: flex;
   gap: 10px;

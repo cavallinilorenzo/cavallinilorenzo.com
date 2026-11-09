@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { TIMELINE } from "../content/experience";
 import {
   formatLength,
+  formatMonth,
   formatRange,
   orderEntries,
   type TimelineEntry,
@@ -13,6 +14,13 @@ const e = (p: Partial<TimelineEntry>): TimelineEntry => ({
   type: "work",
   start: "2026",
   ...p,
+});
+
+describe("formatMonth", () => {
+  it("names the month and leaves a bare year alone", () => {
+    expect(formatMonth("2026-10")).toBe("Oct 2026");
+    expect(formatMonth("2024")).toBe("2024");
+  });
 });
 
 describe("orderEntries", () => {

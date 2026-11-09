@@ -1,36 +1,31 @@
-/* Design tokens: the Cobalt direction, both themes. */
+/* Design tokens: white paper, navy ink, one highlighter. The highlighter is a
+   background under navy text, never a text colour on white. */
 :root {
-  --col: 1080px;
-}
-
-[data-theme="dark"] {
-  color-scheme: dark;
-  --bg: #0a0a0b;
-  --card: #121214;
-  --card2: #17171a;
-  --line: #222226;
-  --mut: #8b8b93;
-  --fg: #ededf0;
-  --acc: #4c7dff;
-  --onacc: #fff;
-  --tile: #16161a;
-  --tilefg: #f2f3f5;
-  --glass: rgba(10, 10, 11, 0.72);
-}
-
-[data-theme="light"] {
   color-scheme: light;
-  --bg: #fafafa;
-  --card: #ffffff;
-  --card2: #f4f4f5;
-  --line: #e4e4e7;
-  --mut: #6b6b73;
-  --fg: #0f0f12;
-  --acc: #2456e6;
-  --onacc: #fff;
-  --tile: #0f0f12;
-  --tilefg: #fafafa;
-  --glass: rgba(250, 250, 250, 0.75);
+  --col: 1240px;
+  --navy: #0b1f3f;
+  --bg: #fff;
+  --card: #fff;
+  --card2: #eef2f8;
+  --pale: #edf1f8;
+  --line: #d6dde8;
+  --mut: #4a5d7e;
+  --fg: #0b1f3f;
+  --acc: #ffe14d;
+  --onacc: #0b1f3f;
+  --tile: #0b1f3f;
+  --tilefg: #fff;
+  --glass: rgb(255 255 255 / 0.9);
+  --body: var(--display);
+  /* Squared paper, 20px cells at 5%. */
+  --grid: rgb(11 31 63 / 0.05);
+  --grid-navy: rgb(255 255 255 / 0.05);
+  --paper:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  --paper-navy:
+    linear-gradient(var(--grid-navy) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-navy) 1px, transparent 1px);
 }
 
 * {
@@ -47,9 +42,12 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: var(--paper);
+  background-size: 20px 20px;
   color: var(--fg);
-  font: 15px/1.55 var(--body);
+  font: 16px/1.55 var(--body);
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -66,7 +64,7 @@ button {
   cursor: pointer;
 }
 
-/* Theme switch: whole-page cross-fade, ~350 ms. */
+/* Whole-page cross-fade, ~350 ms: the log filter. */
 ::view-transition-group(root),
 ::view-transition-old(root),
 ::view-transition-new(root) {
@@ -75,7 +73,7 @@ button {
 
 /* Top bar and tab bar are named so page changes leave them still: they get
    their own layer instead of fading with the rest. Their group never moves,
-   and their cross-fade matches the theme switch. */
+   and they cross-fade like the log filter. */
 [data-chrome="top"] {
   view-transition-name: chrome-top;
 }
@@ -145,7 +143,7 @@ button {
   html {
     scroll-behavior: auto;
   }
-  /* Everything stops except the theme cross-fade: `*` does not match the
+  /* Everything stops except the plain cross-fade: `*` does not match the
      ::view-transition pseudo-elements, which keep their plain 350 ms fade. */
   *,
   *::before,

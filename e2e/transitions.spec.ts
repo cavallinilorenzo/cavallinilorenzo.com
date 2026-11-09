@@ -139,17 +139,4 @@ test.describe("page transitions", () => {
     expect(layers.length).toBeGreaterThan(0);
     expect(layers.some((a) => a.keys.includes("transform"))).toBe(false);
   });
-
-  test("theme switch keeps its cross-fade, with no page slide", async ({
-    page,
-  }) => {
-    await page.addInitScript(RECORDER);
-    await page.goto("/");
-    await page.getByTestId("theme-button").click();
-    await page.waitForTimeout(600);
-    const runs = await recorded(page);
-    expect(runs.length).toBe(1);
-    expect(runs[0].some((a) => a.pseudo.includes("(root)"))).toBe(true);
-    expect(runs[0].some(isSlide)).toBe(false);
-  });
 });

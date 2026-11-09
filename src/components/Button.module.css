@@ -4,14 +4,13 @@
   gap: 8px;
   font: 500 14px var(--body);
   padding: 10px 16px;
-  border-radius: 8px;
-  border: 1px solid var(--line);
+  border: 1px solid currentColor;
   transition:
     border-color 0.15s,
     background 0.15s;
 }
 .btn:hover {
-  border-color: color-mix(in srgb, var(--fg) 30%, transparent);
+  background: color-mix(in srgb, currentColor 10%, transparent);
 }
 .primary {
   background: var(--acc);
@@ -19,6 +18,6 @@
   color: var(--onacc);
 }
 .primary:hover {
-  background: color-mix(in srgb, var(--acc) 88%, #fff);
-  border-color: var(--acc);
+  background: #fff;
+  border-color: #fff;
 }

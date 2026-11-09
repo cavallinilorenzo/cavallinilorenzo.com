@@ -6,13 +6,10 @@ import { staggerDelays } from "@/lib/reveal";
 const BLOCKS = "[data-reveal]:not([data-in])";
 
 /**
- * Mounted once in the layout. Two small effects, no library:
- * - fade-up reveals: every `[data-reveal]` block gets `data-in` the first
+ * Mounted once in the layout, no library. Fade-up reveals: every `[data-reveal]` block gets `data-in` the first
  *   time it enters the viewport (CSS animates it), then is never watched
  *   again, so scrolling back up does not replay it. A MutationObserver picks
  *   up the blocks of pages that arrive by client-side navigation.
- * - card glow: the pointer position over a `[data-glow]` card is written to
- *   `--mx` / `--my` for the CSS radial gradient.
  * It renders nothing; without JavaScript the CSS never hides any content.
  */
 export function MotionEffects() {
@@ -64,21 +61,9 @@ export function MotionEffects() {
     const mo = new MutationObserver(scan);
     mo.observe(main, { childList: true, subtree: true });
 
-    const onMove = (e: PointerEvent) => {
-      const card = (e.target as Element | null)?.closest<HTMLElement>(
-        "[data-glow]",
-      );
-      if (!card) return;
-      const r = card.getBoundingClientRect();
-      card.style.setProperty("--mx", `${e.clientX - r.left}px`);
-      card.style.setProperty("--my", `${e.clientY - r.top}px`);
-    };
-    document.addEventListener("pointermove", onMove, { passive: true });
-
     return () => {
       io.disconnect();
       mo.disconnect();
-      document.removeEventListener("pointermove", onMove);
     };
   }, []);
 

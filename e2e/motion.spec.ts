@@ -80,26 +80,14 @@ test.describe("hero entrance", () => {
 });
 
 test.describe("card hover", () => {
-  test("lifts 2 px, tints the border and shows the glow", async ({ page }) => {
+  test("underlines the project name", async ({ page }) => {
     await page.goto("/projects");
     const card = page.getByTestId("project-card").first();
     await expect(card).toHaveAttribute("data-in", "");
-    const before = await card.evaluate(
-      (el) => getComputedStyle(el).borderColor,
-    );
+    const name = card.locator("h3");
+    await expect(name).toHaveCSS("text-decoration-line", "none");
     await card.hover();
-    await expect
-      .poll(() => card.evaluate((el) => getComputedStyle(el).transform))
-      .toBe("matrix(1, 0, 0, 1, 0, -2)");
-    const after = await card.evaluate((el) => getComputedStyle(el).borderColor);
-    expect(after).not.toBe(before);
-    await expect
-      .poll(() =>
-        card.evaluate((el) => getComputedStyle(el, "::before").opacity),
-      )
-      .toBe("1");
-    const mx = await card.evaluate((el) => el.style.getPropertyValue("--mx"));
-    expect(mx).toMatch(/px$/);
+    await expect(name).toHaveCSS("text-decoration-line", "underline");
   });
 });
 
@@ -130,6 +118,7 @@ test.describe("scroll reveals", () => {
   });
 
   test("cards entering together are staggered", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 2400 });
     await page.goto("/projects");
     await expect(
       page.locator("[data-testid=project-card][data-in]"),
@@ -154,7 +143,6 @@ test.describe("scroll reveals", () => {
       await page.getByRole("link", { name, exact: true }).first().click();
       await expect(page.locator("h1")).toHaveText(name);
       const blocks = page.locator(selector);
-      await expect(blocks.first()).toHaveAttribute("data-in", "");
       await scrollToBottom(page);
       const n = await blocks.count();
       await expect(page.locator(`${selector}[data-in]`)).toHaveCount(n);
@@ -185,9 +173,6 @@ test.describe("reduced motion", () => {
     expect(await last.evaluate((el) => getComputedStyle(el).transform)).toBe(
       "none",
     );
-    expect(
-      await last.evaluate((el) => getComputedStyle(el, "::before").opacity),
-    ).toBe("0");
     expect(await last.evaluate((el) => el.getAnimations().length)).toBe(0);
   });
 });
