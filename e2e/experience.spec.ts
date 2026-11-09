@@ -69,10 +69,18 @@ test.describe("Experience", () => {
   test("at 390px each range sits above its title", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 800 });
     await page.goto("/experience");
-    await settled(page);
     const entry = page.getByTestId("entry").nth(2);
-    const range = await entry.getByTestId("range").boundingBox();
-    const title = await entry.locator("h3").boundingBox();
-    expect(range!.y + range!.height).toBeLessThanOrEqual(title!.y);
+    await entry.scrollIntoViewIfNeeded();
+    await settled(page);
+    // Read both boxes in one synchronous pass: a reveal translating the
+    // entry shifts range and title together, so their relative position is
+    // stable, whereas two awaited reads can straddle an animation frame.
+    const { rangeBottom, titleTop } = await entry.evaluate((el) => ({
+      rangeBottom: el
+        .querySelector('[data-testid="range"]')!
+        .getBoundingClientRect().bottom,
+      titleTop: el.querySelector("h3")!.getBoundingClientRect().top,
+    }));
+    expect(rangeBottom).toBeLessThanOrEqual(titleTop);
   });
 });
