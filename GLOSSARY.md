@@ -21,3 +21,7 @@ _Avoid_: Case study, detail page
 **Project landing**:
 A separate site for a single Project, in that Project's own brand, served on its own subdomain of the portfolio domain.
 _Avoid_: Microsite, product site, landing page
+
+**Project status**:
+The public lifecycle state of a Project: Pre-release, On the App Store, Live or Closed.
+_Avoid_: State, stage

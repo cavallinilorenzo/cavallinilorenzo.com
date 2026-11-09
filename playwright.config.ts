@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 // Runs against the production build: `pnpm build` first, then `pnpm e2e`.
-const PORT = 3100;
+const PORT = Number(process.env.E2E_PORT ?? 3100);
 
 export default defineConfig({
   testDir: "./e2e",

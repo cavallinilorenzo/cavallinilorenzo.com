@@ -22,8 +22,9 @@ for (const [size, viewport] of Object.entries(sizes)) {
     });
     await context.addInitScript((t) => localStorage.setItem("theme", t), theme);
     const page = await context.newPage();
-    await page.goto(`http://localhost:3100${path}`);
-    await page.waitForLoadState("networkidle");
+    await page.goto(`http://localhost:${process.env.E2E_PORT ?? 3100}${path}`);
+    await page.waitForLoadState("load");
+    await page.waitForTimeout(800); // prefetches keep the network from idling
     await page.screenshot({ path: `${out}/${name}-${theme}-${size}.png` });
     await context.close();
   }

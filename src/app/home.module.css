@@ -47,29 +47,25 @@
   gap: 10px;
   flex-wrap: wrap;
 }
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font: 500 14px var(--body);
-  padding: 10px 16px;
-  border-radius: 8px;
-  border: 1px solid var(--line);
-  transition:
-    border-color 0.15s,
-    background 0.15s;
+.sechead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid var(--line);
+  padding: 22px 0 18px;
 }
-.btn:hover {
-  border-color: color-mix(in srgb, var(--fg) 30%, transparent);
+.sechead h2 {
+  font: 500 12px var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mut);
 }
-.primary {
-  background: var(--acc);
-  border-color: var(--acc);
-  color: var(--onacc);
+.sechead a {
+  font-size: 14px;
+  color: var(--mut);
 }
-.primary:hover {
-  background: color-mix(in srgb, var(--acc) 88%, #fff);
-  border-color: var(--acc);
+.sechead a:hover {
+  color: var(--fg);
 }
 
 @media (max-width: 820px) {

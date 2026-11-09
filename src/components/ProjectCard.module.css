@@ -1,0 +1,64 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding-bottom: 72px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px;
+}
+.top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.top h3 {
+  font: 600 20px var(--display);
+  letter-spacing: -0.015em;
+}
+.ico {
+  display: block;
+  border-radius: 22.5%;
+  object-fit: cover;
+  flex: none;
+}
+.pad {
+  border-radius: 0;
+  transform: scale(1.18);
+}
+.badge {
+  margin-left: auto;
+  font: 500 11px var(--mono);
+  padding: 3px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--mut);
+  white-space: nowrap;
+}
+.badge[data-closed] {
+  opacity: 0.75;
+}
+.card p {
+  color: var(--mut);
+  font-size: 14.5px;
+}
+.url {
+  font: 12px var(--mono);
+  color: var(--mut);
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 820px) {
+  .grid {
+    grid-template-columns: 1fr;
+    padding-bottom: 48px;
+  }
+}

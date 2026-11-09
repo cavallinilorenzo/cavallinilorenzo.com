@@ -33,9 +33,13 @@ export const PAGES: Record<PageKey, { title: string; description: string }> = {
   },
 };
 
+export const EMAIL = "hello@cavallinilorenzo.com";
+
 export const COPY = {
   ui: {
     cv: "Download CV",
+    copyEmail: "Copy email",
+    copied: "Email copied",
     theme: "Switch theme",
   },
   footer: {
@@ -49,6 +53,8 @@ export const COPY = {
     intro:
       "I'm Lorenzo, 21, in my last year of computer engineering. If I need a tool, I build it. Sometimes other people need it too.",
     ctaProjects: "See projects",
+    selected: "What I've built",
+    all: "All projects",
   },
   projects: {
     title: "Projects",
