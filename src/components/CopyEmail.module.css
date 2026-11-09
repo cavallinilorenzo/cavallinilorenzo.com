@@ -1,0 +1,47 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 500 14px var(--body);
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: transparent;
+  white-space: nowrap;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+.btn:hover {
+  border-color: color-mix(in srgb, var(--fg) 30%, transparent);
+}
+.primary {
+  background: var(--acc);
+  border-color: var(--acc);
+  color: var(--onacc);
+}
+.primary:hover {
+  border-color: var(--acc);
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 84px;
+  transform: translate(-50%, 20px);
+  opacity: 0;
+  background: var(--fg);
+  color: var(--bg);
+  padding: 9px 14px;
+  border-radius: 8px;
+  font: 500 13px var(--body);
+  transition:
+    opacity 0.25s,
+    transform 0.25s;
+  pointer-events: none;
+  z-index: 60;
+}
+.toast[data-on="true"] {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
