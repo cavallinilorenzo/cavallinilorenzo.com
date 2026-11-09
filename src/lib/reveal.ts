@@ -1,9 +1,14 @@
+/** How long the page waits for MotionEffects before showing everything. */
+export const FAILSAFE_MS = 2500;
+
 /**
  * Inline script run in <head>: flags that JavaScript is on, which is the only
  * thing that lets the CSS hide not-yet-revealed blocks. Without JavaScript
- * (or if this never runs) every block simply stays visible.
+ * (or if this never runs) every block simply stays visible. Failsafe: if the
+ * bundle never loads, MotionEffects never sets `window.__rv`, so after
+ * FAILSAFE_MS the flag is removed and every hidden block shows.
  */
-export const JS_FLAG_SCRIPT = `document.documentElement.dataset.js=""`;
+export const JS_FLAG_SCRIPT = `document.documentElement.dataset.js="";setTimeout(function(){if(!window.__rv)delete document.documentElement.dataset.js},${FAILSAFE_MS})`;
 
 /** Gap between two cards that reveal in the same batch. */
 export const STAGGER_MS = 70;

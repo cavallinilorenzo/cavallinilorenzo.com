@@ -17,6 +17,8 @@ const BLOCKS = "[data-reveal]:not([data-in])";
  */
 export function MotionEffects() {
   useEffect(() => {
+    // Tells the head script's failsafe that the bundle loaded.
+    (window as unknown as { __rv?: boolean }).__rv = true;
     const main = document.querySelector("main");
     if (!main) return;
     const seen = new WeakSet<Element>();
