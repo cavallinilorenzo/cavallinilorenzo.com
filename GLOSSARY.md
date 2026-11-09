@@ -25,3 +25,13 @@ _Avoid_: Microsite, product site, landing page
 **Project status**:
 The public lifecycle state of a Project: Pre-release, On the App Store, Live or Closed.
 _Avoid_: State, stage
+
+### Experience
+
+**Timeline entry**:
+One period or single moment on the Experience timeline: education, work, a hackathon or a Project.
+_Avoid_: Event, milestone, item
+
+**Ongoing**:
+A Timeline entry with no end yet; the only thing the accent colour marks on the Experience page.
+_Avoid_: Current, active
