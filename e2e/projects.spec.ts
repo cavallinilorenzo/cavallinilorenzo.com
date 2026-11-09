@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { settled } from "./settled";
 
 const CARDS = [
   ["Oxide", "Pre-release", "https://oxide.cavallinilorenzo.com", "↗"],
@@ -59,7 +60,8 @@ test.describe("Home", () => {
     const cv = page.getByRole("link", { name: "↓ Download CV" });
     const copy = page.getByRole("button", { name: "Copy email" });
     await expect(h1).toHaveText(/By day I study,\s*by night I build\./);
-    await expect(h1.locator("span")).toHaveText("build");
+    await expect(h1.locator("span span span")).toHaveText("build");
+    await settled(page);
     const ys = await Promise.all(
       [avail, h1, intro, see].map(async (l) => (await l.boundingBox())!.y),
     );
@@ -80,6 +82,7 @@ test.describe("Home", () => {
       page.getByRole("link", { name: "All projects →" }),
     ).toHaveAttribute("href", "/projects");
     await expectCards(page);
+    await settled(page);
     const ys = await page
       .getByTestId("project-card")
       .evaluateAll((els) =>

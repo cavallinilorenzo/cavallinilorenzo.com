@@ -16,6 +16,7 @@ export function EmailTile({ glyph }: { glyph: React.ReactNode }) {
         className={tile.tile}
         onClick={copy}
         data-testid="email-tile"
+        data-reveal="card"
       >
         {glyph}
         <h3>{item.name}</h3>

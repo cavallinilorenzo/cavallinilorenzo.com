@@ -22,6 +22,7 @@ export default function LinksPage() {
             <a
               key={item.id}
               className={tile.tile}
+              data-reveal="card"
               href={`https://${item.url}`}
               target="_blank"
               rel="noopener noreferrer"

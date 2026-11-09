@@ -2,8 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Inter, Inter_Tight } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { MotionEffects } from "@/components/MotionEffects";
 import { TabBar } from "@/components/TabBar";
 import { PAGES } from "@/content/copy";
+import { JS_FLAG_SCRIPT } from "@/lib/reveal";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import "./globals.css";
 import styles from "./layout.module.css";
@@ -49,12 +51,14 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+        <script dangerouslySetInnerHTML={{ __html: JS_FLAG_SCRIPT }} />
       </head>
       <body>
         <Header />
         <main className={styles.main}>{children}</main>
         <Footer />
         <TabBar />
+        <MotionEffects />
       </body>
     </html>
   );

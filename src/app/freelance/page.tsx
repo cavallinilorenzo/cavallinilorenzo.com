@@ -18,7 +18,7 @@ export default function FreelancePage() {
     <PageTransition>
       <PageIntro title={f.title} intro={f.intro} />
 
-      <div className={styles.stats} data-testid="stats">
+      <div className={styles.stats} data-testid="stats" data-reveal>
         {f.stats.map(([value, label]) => (
           <div key={label}>
             <b>{value}</b>
@@ -27,7 +27,7 @@ export default function FreelancePage() {
         ))}
       </div>
 
-      <section className={styles.block}>
+      <section className={styles.block} data-reveal>
         <h2 className={styles.h2}>{f.what}</h2>
         <p className={styles.h2sub}>{f.whatSub}</p>
         <div className={styles.services} data-testid="services">
@@ -43,7 +43,7 @@ export default function FreelancePage() {
         </div>
       </section>
 
-      <section className={styles.block}>
+      <section className={styles.block} data-reveal>
         <h2 className={styles.h2}>{f.clientsTitle}</h2>
         <p className={styles.h2sub}>{f.clientsSub}</p>
         <div className={styles.cases}>
@@ -84,7 +84,7 @@ export default function FreelancePage() {
         </p>
       </section>
 
-      <div className={styles.band}>
+      <div className={styles.band} data-reveal>
         <h2>{f.endQ}</h2>
         <p>
           <span className={styles.dot} aria-hidden="true" />

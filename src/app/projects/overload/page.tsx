@@ -57,7 +57,7 @@ export default function OverloadPage() {
           {cta.label} ↗
         </a>
       </div>
-      <div className={styles.shots} data-testid="screenshots">
+      <div className={styles.shots} data-testid="screenshots" data-reveal>
         {screenshots.map((s, i) => (
           <div className={styles.phone} data-frame={s.frame} key={s.src}>
             {shotExists(s.src) ? (
@@ -75,10 +75,10 @@ export default function OverloadPage() {
         ))}
       </div>
       <div className={styles.split}>
-        <div className={styles.prose}>
+        <div className={styles.prose} data-reveal>
           <Prose />
         </div>
-        <dl className={styles.facts} data-testid="facts">
+        <dl className={styles.facts} data-testid="facts" data-reveal>
           {factsFor(p).map(([label, value]) => (
             <div key={label}>
               <dt>{label}</dt>

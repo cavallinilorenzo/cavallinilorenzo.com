@@ -1,3 +1,4 @@
+import { settled } from "./settled";
 import { expect, test } from "@playwright/test";
 
 const TITLES = [
@@ -68,6 +69,7 @@ test.describe("Experience", () => {
   test("at 390px each range sits above its title", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 800 });
     await page.goto("/experience");
+    await settled(page);
     const entry = page.getByTestId("entry").nth(2);
     const range = await entry.getByTestId("range").boundingBox();
     const title = await entry.locator("h3").boundingBox();

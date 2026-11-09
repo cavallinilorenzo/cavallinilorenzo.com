@@ -23,11 +23,16 @@ export default function Home() {
           {COPY.home.avail}
         </div>
         <h1 className={styles.big}>
-          {a}
-          <br />
-          {b}
-          <span className={styles.accent}>{accent}</span>
-          {c}
+          <span className={styles.line}>
+            <span className={styles.lineIn}>{a}</span>
+          </span>
+          <span className={styles.line}>
+            <span className={styles.lineIn}>
+              {b}
+              <span className={styles.accent}>{accent}</span>
+              {c}
+            </span>
+          </span>
         </h1>
         <p className={styles.sub}>{COPY.home.intro}</p>
         <div className={styles.cta}>
@@ -41,7 +46,7 @@ export default function Home() {
         </div>
       </section>
       <section aria-labelledby="selected">
-        <div className={styles.sechead}>
+        <div className={styles.sechead} data-reveal>
           <h2 id="selected">{COPY.home.selected}</h2>
           <Link href="/projects">{COPY.home.all} →</Link>
         </div>

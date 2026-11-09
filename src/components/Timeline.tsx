@@ -95,6 +95,7 @@ export function Timeline({
             className={styles.item}
             data-ongoing={e.ongoing || undefined}
             data-testid="entry"
+            data-reveal
           >
             <div className={styles.range} data-testid="range">
               {range.ongoing ? (

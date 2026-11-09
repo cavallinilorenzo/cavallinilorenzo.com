@@ -20,7 +20,11 @@
 }
 .tile:hover {
   border-color: color-mix(in srgb, var(--acc) 55%, var(--line));
-  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tile:hover {
+    transform: translateY(-2px);
+  }
 }
 .tile :global(.gl) {
   width: 30px;

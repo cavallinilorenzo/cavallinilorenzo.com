@@ -56,12 +56,17 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
     </>
   );
+  const attrs = {
+    "data-testid": "project-card",
+    "data-reveal": "card",
+    "data-glow": "",
+  };
   return project.destination.kind === "page" ? (
-    <Link className={styles.card} href={href} data-testid="project-card">
+    <Link className={styles.card} href={href} {...attrs}>
       {inner}
     </Link>
   ) : (
-    <a className={styles.card} href={href} data-testid="project-card">
+    <a className={styles.card} href={href} {...attrs}>
       {inner}
     </a>
   );
