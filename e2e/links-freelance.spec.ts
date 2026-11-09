@@ -90,6 +90,19 @@ test.describe("Freelance", () => {
     expect(await clipboard(page)).toBe(EMAIL);
   });
 
+  test("a failed copy says so instead of staying silent", async ({ page }) => {
+    await page.addInitScript(() => {
+      Object.defineProperty(navigator, "clipboard", {
+        value: { writeText: () => Promise.reject(new Error("denied")) },
+      });
+    });
+    await page.goto("/freelance");
+    await page.getByRole("button", { name: "Copy email" }).click();
+    await expect(page.getByTestId("copy-toast")).toHaveText(
+      "Copy failed, try again",
+    );
+  });
+
   test("client cards are side by side on desktop", async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto("/freelance");

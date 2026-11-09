@@ -8,7 +8,8 @@ import { useCopyEmail } from "./useCopyEmail";
 /** The Links page's Email tile: shows the address, copies it on click. */
 export function EmailTile({ glyph }: { glyph: React.ReactNode }) {
   const { copy, toast } = useCopyEmail();
-  const item = COPY.links.items[3];
+  const item = COPY.links.items.find((i) => i.id === "mail");
+  if (!item) throw new Error("links.items has no mail entry");
   return (
     <>
       <button

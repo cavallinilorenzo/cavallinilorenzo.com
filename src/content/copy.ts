@@ -47,6 +47,7 @@ export const COPY = {
     cv: "Download CV",
     copyEmail: "Copy email",
     copied: "Email copied",
+    copyFailed: "Copy failed, try again",
     theme: "Switch theme",
   },
   footer: {

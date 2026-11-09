@@ -10,29 +10,28 @@ import styles from "./CopyEmail.module.css";
  * shows a confirmation toast for two seconds.
  */
 export function useCopyEmail() {
-  const [copied, setCopied] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => () => clearTimeout(timer.current), []);
 
   const copy = async () => {
     const ok = await copyEmail(navigator.clipboard);
-    if (!ok) return;
-    setCopied(true);
+    setMessage(ok ? COPY.ui.copied : COPY.ui.copyFailed);
     clearTimeout(timer.current);
-    timer.current = setTimeout(() => setCopied(false), 2000);
+    timer.current = setTimeout(() => setMessage(null), 2000);
   };
 
   const toast = (
     <div
       className={styles.toast}
-      data-on={copied}
+      data-on={message !== null}
       role="status"
       data-testid="copy-toast"
     >
-      {copied ? COPY.ui.copied : ""}
+      {message ?? ""}
     </div>
   );
 
-  return { copy, copied, toast };
+  return { copy, toast };
 }
