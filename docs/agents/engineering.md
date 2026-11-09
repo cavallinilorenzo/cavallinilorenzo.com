@@ -12,16 +12,17 @@ Read by `/verify`, `/judge`, `/build`, `/ship`, `/ui` and `/release`.
 
 ## Recipe
 
-TODO: no stack yet. Fill in once the framework is chosen, then run each command once.
-
-- setup: `TODO`
+- setup: `pnpm install --frozen-lockfile && pnpm exec playwright install chromium`
 - checks:
-  - `TODO lint or typecheck`
-  - `TODO test`
-  - `TODO build`
-- run: `TODO`, available at `TODO`
-- exercise: TODO (browser or curl against the dev server)
-- screenshots: TODO
+  - `pnpm format:check` (Prettier)
+  - `pnpm lint` (ESLint)
+  - `pnpm typecheck`
+  - `pnpm test` (Vitest, pure logic in `src/**/*.test.ts`)
+  - `pnpm build` (every route in the table must be `○ Static`)
+  - `pnpm e2e` (Playwright against the production build; run `pnpm build` first)
+- run: `pnpm dev`, available at `http://localhost:3000`. For the production build: `pnpm build && pnpm start --port 3100`, at `http://localhost:3100`
+- exercise: browser or curl against the production server, e.g. `curl -sI http://localhost:3100/cv.pdf` must answer `content-type: application/pdf`
+- screenshots: with the production server on :3100, `node scripts/screenshots.mjs <path> <outDir>` writes dark/light, desktop/390px PNGs (default dir `screenshots/`, gitignored)
 - test data: none needed, the site has no user data
 
 ## Review

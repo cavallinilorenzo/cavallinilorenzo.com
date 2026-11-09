@@ -1,0 +1,79 @@
+.hero {
+  padding: 96px 0 72px;
+}
+.avail {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font: 13px var(--mono);
+  color: var(--mut);
+  margin-bottom: 28px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--acc);
+  display: inline-block;
+  animation: pulse 2.2s infinite;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--acc) 60%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 7px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+.big {
+  font: 600 clamp(44px, 7.4vw, 88px) / 1 var(--display);
+  letter-spacing: -0.04em;
+  max-width: 13ch;
+}
+.accent {
+  color: var(--acc);
+}
+.sub {
+  font-size: 18px;
+  color: var(--mut);
+  max-width: 52ch;
+  margin: 24px 0 32px;
+}
+.cta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 500 14px var(--body);
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+.btn:hover {
+  border-color: color-mix(in srgb, var(--fg) 30%, transparent);
+}
+.primary {
+  background: var(--acc);
+  border-color: var(--acc);
+  color: var(--onacc);
+}
+.primary:hover {
+  background: color-mix(in srgb, var(--acc) 88%, #fff);
+  border-color: var(--acc);
+}
+
+@media (max-width: 820px) {
+  .hero {
+    padding: 56px 0 48px;
+  }
+}
