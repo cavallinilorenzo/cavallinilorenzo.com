@@ -18,7 +18,7 @@ Read by `/verify`, `/judge`, `/build`, `/ship`, `/ui` and `/release`.
   - `pnpm lint` (ESLint)
   - `pnpm typecheck`
   - `pnpm test` (Vitest, pure logic in `src/**/*.test.ts`)
-  - `pnpm build` (every route in the table must be `○ Static`)
+  - `pnpm build` (every route must be `○ Static`; `scripts/check-static.mjs` runs after it and fails on dynamic routes, route handlers, server actions or proxy)
   - `pnpm e2e` (Playwright against the production build; run `pnpm build` first)
 - run: `pnpm dev`, available at `http://localhost:3000`. For the production build: `pnpm build && pnpm start --port 3100`, at `http://localhost:3100`
 - exercise: browser or curl against the production server, e.g. `curl -sI http://localhost:3100/cv.pdf` must answer `content-type: application/pdf`
