@@ -1,22 +1,47 @@
 import Image from "next/image";
 import Link from "next/link";
-import { arrowFor, displayUrl, hrefFor, type Project } from "@/lib/project";
+import { ViewTransition } from "react";
+import {
+  arrowFor,
+  displayUrl,
+  hrefFor,
+  morphNames,
+  type Project,
+} from "@/lib/project";
 import styles from "./ProjectCard.module.css";
 
 export function ProjectCard({ project }: { project: Project }) {
   const href = hrefFor(project);
+  // Only a Project with its own page morphs; it shares names with that page.
+  const morph = project.destination.kind === "page" && morphNames(project);
+  const icon = (
+    <Image
+      className={`${styles.ico} ${project.icon.padded ? styles.pad : ""}`}
+      src={project.icon.src}
+      width={48}
+      height={48}
+      alt=""
+      unoptimized
+    />
+  );
+  const name = <h3>{project.name}</h3>;
   const inner = (
     <>
       <div className={styles.top}>
-        <Image
-          className={`${styles.ico} ${project.icon.padded ? styles.pad : ""}`}
-          src={project.icon.src}
-          width={48}
-          height={48}
-          alt=""
-          unoptimized
-        />
-        <h3>{project.name}</h3>
+        {morph ? (
+          <ViewTransition name={morph.icon} share="morph" default="none">
+            {icon}
+          </ViewTransition>
+        ) : (
+          icon
+        )}
+        {morph ? (
+          <ViewTransition name={morph.name} share="morph" default="none">
+            {name}
+          </ViewTransition>
+        ) : (
+          name
+        )}
         <span
           className={styles.badge}
           data-closed={project.status === "Closed" || undefined}

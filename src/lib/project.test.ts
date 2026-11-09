@@ -4,6 +4,7 @@ import {
   arrowFor,
   displayUrl,
   hrefFor,
+  morphNames,
   parseProject,
   parseRegistry,
 } from "./project";
@@ -137,5 +138,17 @@ describe("destination rules", () => {
   it("shows the URL without the scheme", () => {
     expect(displayUrl(landing)).toBe("oxide.example.com");
     expect(displayUrl(inside)).toBe("cavallinilorenzo.com/projects/overload");
+  });
+});
+
+describe("morphNames", () => {
+  it("gives each Project its own icon and name transition names", () => {
+    expect(morphNames({ id: "overload" })).toEqual({
+      icon: "overload-icon",
+      name: "overload-name",
+    });
+    expect(morphNames({ id: "oxide" }).icon).not.toBe(
+      morphNames({ id: "overload" }).icon,
+    );
   });
 });

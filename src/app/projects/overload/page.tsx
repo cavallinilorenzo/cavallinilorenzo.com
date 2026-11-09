@@ -2,11 +2,14 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import Image from "next/image";
 import Link from "next/link";
+import { ViewTransition } from "react";
 import button from "@/components/Button.module.css";
+import { PageTransition } from "@/components/PageTransition";
 import { OVERLOAD_PAGE } from "@/content/copy";
 import Prose from "@/content/overload.mdx";
 import { PROJECTS } from "@/content/projects";
 import { factsFor, findPageProject } from "@/lib/facts";
+import { morphNames } from "@/lib/project";
 import styles from "./overload.module.css";
 
 export const metadata = {
@@ -22,22 +25,27 @@ const shotExists = (src: string) =>
 export default function OverloadPage() {
   const p = findPageProject(PROJECTS, "overload");
   const { tagline, cta, screenshots } = p.destination;
+  const morph = morphNames(p);
   return (
-    <>
+    <PageTransition>
       <Link className={styles.crumb} href="/projects">
         ← Projects
       </Link>
       <div className={styles.hero}>
-        <Image
-          className={styles.ico}
-          src={p.icon.src}
-          width={88}
-          height={88}
-          alt=""
-          unoptimized
-        />
+        <ViewTransition name={morph.icon} share="morph" default="none">
+          <Image
+            className={styles.ico}
+            src={p.icon.src}
+            width={88}
+            height={88}
+            alt=""
+            unoptimized
+          />
+        </ViewTransition>
         <div>
-          <h1>{p.name}</h1>
+          <ViewTransition name={morph.name} share="morph" default="none">
+            <h1>{p.name}</h1>
+          </ViewTransition>
           <p>{tagline}</p>
         </div>
         <a
@@ -79,6 +87,6 @@ export default function OverloadPage() {
           ))}
         </dl>
       </div>
-    </>
+    </PageTransition>
   );
 }

@@ -5,6 +5,7 @@ import { PageIntro } from "@/components/PageIntro";
 import { COPY, PAGES } from "@/content/copy";
 import { MAILTO } from "@/lib/email";
 import styles from "./freelance.module.css";
+import { PageTransition } from "@/components/PageTransition";
 
 export const metadata = {
   title: { absolute: PAGES.freelance.title },
@@ -14,7 +15,7 @@ export const metadata = {
 export default function FreelancePage() {
   const f = COPY.freelance;
   return (
-    <>
+    <PageTransition>
       <PageIntro title={f.title} intro={f.intro} />
 
       <div className={styles.stats} data-testid="stats">
@@ -96,6 +97,6 @@ export default function FreelancePage() {
           <CopyEmailButton />
         </div>
       </div>
-    </>
+    </PageTransition>
   );
 }

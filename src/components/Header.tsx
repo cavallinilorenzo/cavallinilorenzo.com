@@ -27,6 +27,7 @@ export function Header() {
       className={styles.header}
       data-scrolled={scrolled}
       data-testid="topbar"
+      data-chrome="top"
     >
       <div className={styles.inner}>
         <Link className={styles.brand} href="/">

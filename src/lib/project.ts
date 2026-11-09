@@ -159,3 +159,13 @@ export function displayUrl(p: Project): string {
     ? SITE_HOST + p.destination.path
     : p.destination.url.replace(/^https:\/\//, "");
 }
+
+// View-transition names shared by a Project card and its Project page, so the
+// icon and the name morph between them. Unique per Project: only the opened
+// Project morphs, other cards just fade with the page.
+export function morphNames(project: Pick<Project, "id">) {
+  return {
+    icon: `${project.id}-icon`,
+    name: `${project.id}-name`,
+  };
+}

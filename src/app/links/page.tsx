@@ -3,6 +3,7 @@ import { Glyph } from "@/components/glyphs";
 import tile from "@/components/LinkTile.module.css";
 import { PageIntro } from "@/components/PageIntro";
 import { COPY, PAGES } from "@/content/copy";
+import { PageTransition } from "@/components/PageTransition";
 
 export const metadata = {
   title: { absolute: PAGES.links.title },
@@ -11,7 +12,7 @@ export const metadata = {
 
 export default function LinksPage() {
   return (
-    <>
+    <PageTransition>
       <PageIntro title={COPY.links.title} intro={COPY.links.intro} />
       <div className={tile.grid}>
         {COPY.links.items.map((item) =>
@@ -36,6 +37,6 @@ export default function LinksPage() {
           ),
         )}
       </div>
-    </>
+    </PageTransition>
   );
 }

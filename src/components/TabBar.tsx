@@ -9,7 +9,12 @@ import styles from "./TabBar.module.css";
 export function TabBar() {
   const pathname = usePathname();
   return (
-    <nav className={styles.tabbar} aria-label="Main" data-testid="tabbar">
+    <nav
+      className={styles.tabbar}
+      aria-label="Main"
+      data-testid="tabbar"
+      data-chrome="tabs"
+    >
       {NAV.map((item) => (
         <Link
           key={item.href}

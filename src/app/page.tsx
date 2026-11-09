@@ -6,6 +6,7 @@ import { ProjectGrid } from "@/components/ProjectCard";
 import { COPY, PAGES } from "@/content/copy";
 import { PROJECTS } from "@/content/projects";
 import styles from "./home.module.css";
+import { PageTransition } from "@/components/PageTransition";
 
 export const metadata = {
   title: { absolute: PAGES.home.title },
@@ -15,7 +16,7 @@ export const metadata = {
 export default function Home() {
   const [a, b, accent, c] = COPY.home.h1;
   return (
-    <>
+    <PageTransition>
       <section className={styles.hero}>
         <div className={styles.avail}>
           <span className={styles.dot} />
@@ -46,6 +47,6 @@ export default function Home() {
         </div>
         <ProjectGrid projects={PROJECTS} />
       </section>
-    </>
+    </PageTransition>
   );
 }
