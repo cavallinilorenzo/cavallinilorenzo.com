@@ -105,9 +105,7 @@ test.describe("Home", () => {
     const page = await context.newPage();
     await page.goto("/");
     await page.getByRole("button", { name: "Copy email" }).click();
-    await expect(
-      page.getByRole("button", { name: /Email copied/ }),
-    ).toBeVisible();
+    await expect(page.getByTestId("copy-toast")).toHaveText("Email copied");
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(
       "hello@cavallinilorenzo.com",
     );

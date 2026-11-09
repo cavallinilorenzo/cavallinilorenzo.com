@@ -41,4 +41,35 @@ describe("copy rules", () => {
     expect(COPY.footer.left).toBe("© 2026 Lorenzo Cavallini");
     expect(COPY.footer.right).toBe("Mantova, Italy");
   });
+  it("has the Links and Freelance strings of voice M", () => {
+    expect(COPY.ui.copyEmail).toBe("Copy email");
+    expect(COPY.ui.copied).toBe("Email copied");
+    expect(COPY.links.items.map((l) => l.name)).toEqual([
+      "GitHub",
+      "LinkedIn",
+      "X",
+      "Email",
+    ]);
+    // MIX rows come from voice A.
+    expect(COPY.links.items[2].desc).toBe("Short posts while I build.");
+    expect(COPY.links.items[3].desc).toBe(
+      "The fastest way to reach me. Click to copy.",
+    );
+    expect(COPY.freelance.stats).toEqual([
+      ["11", "projects delivered"],
+      ["2", "clients"],
+      ["Feb 2026", "freelancing since"],
+    ]);
+    expect(COPY.freelance.services).toHaveLength(3);
+    expect(COPY.freelance.clients.map((c) => c.name)).toEqual([
+      "Strongvilla",
+      "A loan broker",
+    ]);
+    expect(COPY.freelance.endQ).toBe(
+      "Still copying the same data by hand every week?",
+    );
+  });
+  it("never claims a Notion and Google Calendar sync", () => {
+    for (const s of allStrings()) expect(s).not.toMatch(/calendar/i);
+  });
 });

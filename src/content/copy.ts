@@ -64,11 +64,112 @@ export const COPY = {
   links: {
     title: "Links",
     intro: "Where I push code, where I post, and how to reach me.",
+    items: [
+      {
+        id: "github",
+        name: "GitHub",
+        desc: "Where the code lives. Hackathon repos included.",
+        url: "github.com/cavallinilorenzo",
+      },
+      {
+        id: "linkedin",
+        name: "LinkedIn",
+        desc: "Where I write about what I build, failures included.",
+        url: "linkedin.com/in/cavallini-lorenzo",
+      },
+      {
+        id: "x",
+        name: "X",
+        desc: "Short posts while I build.",
+        url: "x.com/ItsCava05",
+      },
+      {
+        id: "mail",
+        name: "Email",
+        desc: "The fastest way to reach me. Click to copy.",
+      },
+    ],
   },
   freelance: {
     title: "Freelance",
     intro:
       "Since February 2026 I've built software for two clients. The goal is always the same: less work done by hand.",
+    stats: [
+      ["11", "projects delivered"],
+      ["2", "clients"],
+      ["Feb 2026", "freelancing since"],
+    ],
+    what: "What I do",
+    whatSub: "Three kinds of work, often mixed in the same project.",
+    services: [
+      {
+        id: "auto",
+        title: "Automations",
+        desc: "If you copy the same data between Gmail, Notion and a spreadsheet every week, I make it copy itself.",
+      },
+      {
+        id: "desk",
+        title: "Desktop tools",
+        desc: "One app instead of 300 documents a year filled in by hand.",
+      },
+      {
+        id: "ai",
+        title: "Scrapers and AI pipelines",
+        desc: "Scheduled jobs that read the web or a mailbox, let an LLM structure the data and leave drafts where you work.",
+      },
+    ],
+    clients: [
+      {
+        id: "strong",
+        name: "Strongvilla",
+        kind: "Cultural association · client since Feb 2026",
+        summary:
+          "Music productions, events, a magazine and Mantova Soon, an events guide for the city. Each area ran on its own spreadsheets. I moved the work into one system and automated the daily chores around it.",
+        items: [
+          [
+            "Sales and projects back office",
+            "Notion and Make: quotes in the invoicing tool, files in Dropbox, email drafts in Gmail, a budget and a folder for every project.",
+          ],
+          [
+            "Mantova Soon event bot",
+            "Every morning it reads yesterday's Instagram posts, Gemini picks out the events (posters included) and drafts land in the CMS.",
+          ],
+          [
+            "Paperwork app",
+            "Contracts, receipts and reimbursements for occasional workers: about 300 documents a year, filled in, filed and ready to send.",
+          ],
+        ],
+        stack: ["Notion", "Make", "Python", "Gemini"],
+      },
+      {
+        id: "agent",
+        name: "A loan broker",
+        kind: "Financial agent · name withheld",
+        summary:
+          "One person, a lot of loan paperwork. Now the forms fill themselves and the documents file themselves, on the broker's own Mac.",
+        items: [
+          [
+            "Self-filling loan forms",
+            "A macOS app fills each file's PDF forms from the client record in Notion.",
+          ],
+          [
+            "Clients from the inbox",
+            "New clients land in Notion straight from incoming Gmail messages.",
+          ],
+          [
+            "Local document filing",
+            "A background service renames, classifies and files documents with an on-device AI model.",
+          ],
+        ],
+        stack: ["Rust", "Tauri", "Notion", "Make"],
+      },
+    ],
+    clientsTitle: "Clients",
+    clientsSub: "What I built, client by client.",
+    anon: "Only Strongvilla is named. The other client stays anonymous: no logos, no figures.",
+    endQ: "Still copying the same data by hand every week?",
+    endAvail: "Taking on new projects",
+    write: "Write to me",
   },
   experience: {
     title: "Experience",
