@@ -14,7 +14,7 @@ export const PROJECTS = parseRegistry([
   {
     id: "oxide",
     name: "Oxide",
-    icon: { src: "/projects/oxide.svg" },
+    icon: { src: "/projects/oxide.png" },
     status: "Pre-release",
     short:
       "Coding agents write the code. Oxide is where you read it, fix it and merge it. Open source, built with Matteo Benassi.",
