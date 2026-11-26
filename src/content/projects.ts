@@ -21,7 +21,7 @@ export const PROJECTS = parseRegistry([
     platform: "macOS",
     stack: "Rust",
     year: "2026",
-    destination: { kind: "landing", url: "https://oxide.cavallinilorenzo.com" },
+    destination: { kind: "landing", url: "https://getoxide.dev" },
   },
   {
     id: "overload",

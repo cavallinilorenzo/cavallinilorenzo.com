@@ -1,0 +1,5 @@
+# wrangler runs without these install scripts (workerd and esbuild ship
+# prebuilt binaries as optional platform packages), so they stay off.
+allowBuilds:
+  esbuild: false
+  workerd: false

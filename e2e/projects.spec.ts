@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 import { settled } from "./settled";
 
 const CARDS = [
-  ["Oxide", "Pre-release", "https://oxide.cavallinilorenzo.com", "↗"],
+  ["Oxide", "Pre-release", "https://getoxide.dev", "↗"],
   ["Overload", "On the App Store", "/projects/overload", "→"],
   ["Clicky.rs", "Live", "https://clicky.cavallinilorenzo.com", "↗"],
   ["GNAM!", "Closed", "https://gnam.cavallinilorenzo.com", "↗"],
