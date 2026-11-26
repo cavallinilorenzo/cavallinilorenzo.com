@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-// Redirects are declared in next.config.ts and must be permanent (308).
+// Redirects are declared in public/_redirects and must be permanent (308).
 // maxRedirects: 0 so we see the redirect itself, not its target.
 const redirects: [string, string][] = [
   ["/startups", "/projects"],

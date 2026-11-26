@@ -8,7 +8,7 @@ Read by `/verify`, `/judge`, `/build`, `/ship`, `/ui` and `/release`.
 - sensitive: no
 - high-risk paths:
   - .github/workflows/**: deploy pipeline
-  - hosting/DNS config, if it ever lands in the repo: takes the public site down
+  - wrangler.jsonc, public/_redirects: hosting config, takes the public site down
 
 ## Recipe
 
@@ -19,8 +19,8 @@ Read by `/verify`, `/judge`, `/build`, `/ship`, `/ui` and `/release`.
   - `pnpm typecheck`
   - `pnpm test` (Vitest, pure logic in `src/**/*.test.ts`)
   - `pnpm build` (every route must be `○ Static`; `scripts/check-static.mjs` runs after it and fails on dynamic routes, route handlers, server actions or proxy)
-  - `pnpm e2e` (Playwright against the production build; run `pnpm build` first)
-- run: `pnpm dev`, available at `http://localhost:3000`. For the production build: `pnpm build && pnpm start --port 3100`, at `http://localhost:3100`
+  - `pnpm e2e` (Playwright against the production build served by `wrangler dev`; run `pnpm build` first)
+- run: `pnpm dev`, available at `http://localhost:3000`. For the production build: `pnpm build && pnpm start --port 3100` (`wrangler dev` serving `out/` with `_redirects`, as Cloudflare does), at `http://localhost:3100`
 - exercise: browser or curl against the production server, e.g. `curl -sI http://localhost:3100/cv.pdf` must answer `content-type: application/pdf`
 - screenshots: with the production server on :3100, `node scripts/screenshots.mjs <path> <outDir>` writes desktop/390px PNGs (default dir `screenshots/`, gitignored)
 - test data: none needed, the site has no user data

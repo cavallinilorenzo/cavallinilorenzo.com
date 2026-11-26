@@ -1,0 +1,15 @@
+// Cloudflare Workers static assets: no Worker script, only the files that
+// `pnpm build` writes to `out/` (ADR-0001). Deployed by Workers Builds.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cavallinilorenzo-com",
+  "compatibility_date": "2026-11-26",
+  "assets": {
+    "directory": "./out",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+  },
+  // The apex is the canonical host. www redirects to it through a Cloudflare
+  // Redirect Rule on the zone, not here.
+  "routes": [{ "pattern": "cavallinilorenzo.com", "custom_domain": true }],
+}

@@ -2,6 +2,7 @@
 node_modules/
 .next/
 out/
+.wrangler/
 next-env.d.ts
 *.tsbuildinfo
 test-results/

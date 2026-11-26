@@ -1,0 +1,7 @@
+# Permanent (308) redirects for old URLs, applied by Cloudflare static assets.
+# Covered by e2e/redirects.spec.ts. Static rules go above splat rules.
+/startups /projects 308
+/events /experience 308
+/assets/cv.pdf /cv.pdf 308
+# The splat needs a path segment after the slash, so /freelance stays a page.
+/freelance/* /freelance 308

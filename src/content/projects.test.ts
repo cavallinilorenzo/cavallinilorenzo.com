@@ -21,7 +21,7 @@ describe("the real registry", () => {
   });
   it("points at the agreed destinations", () => {
     expect(PROJECTS.map(hrefFor)).toEqual([
-      "https://oxide.cavallinilorenzo.com",
+      "https://getoxide.dev",
       "/projects/overload",
       "https://clicky.cavallinilorenzo.com",
       "https://gnam.cavallinilorenzo.com",
